@@ -1,6 +1,12 @@
 # agent
 ## 上报协议
 ```proto
+syntax = "proto3";
+
+// 包名需要一致
+package service;
+option go_package = "../service/pb";
+
 message ReportReq {
   int32  MachineId = 1;
   double CpuPercent = 2;
