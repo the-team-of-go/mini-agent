@@ -11,7 +11,7 @@ import (
 )
 
 type server struct {
-	pb.ReportServer
+	pb.UnimplementedReportServer
 }
 
 func (s *server) Send(ctx context.Context, req *pb.ReportReq) (*pb.ReportRsp, error) {

@@ -18,7 +18,6 @@ func Init() {
 
 func main() {
 	Init()
-
 	wg.Add(2)
 	go func() {
 		for {
@@ -28,9 +27,6 @@ func main() {
 			time.Sleep(time.Duration(setting.ReportSetting.Duration) * time.Second)
 		}
 	}()
-	go func() {
-		service.StartServer()
-	}()
-
+	go service.StartServer()
 	wg.Wait()
 }
