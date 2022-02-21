@@ -27,6 +27,6 @@ func main() {
 			time.Sleep(time.Duration(setting.ReportSetting.Duration) * time.Second)
 		}
 	}()
-	go service.StartServer()
+	//go service.StartServer()
 	wg.Wait()
 }
