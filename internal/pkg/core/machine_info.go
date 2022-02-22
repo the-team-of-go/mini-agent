@@ -14,12 +14,6 @@ type MachineInfo struct {
 	TimeStamp   int64   `json:"timestamp"`
 }
 
-type DiskStatus struct {
-	All  uint64 `json:"all"`
-	Used uint64 `json:"used"`
-	Free uint64 `json:"free"`
-}
-
 func GetCpuPercent() float64 {
 	percent, _ := cpu.Percent(time.Second, false)
 	return percent[0]
