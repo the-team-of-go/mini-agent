@@ -32,11 +32,15 @@ func main() {
 		log.Printf("set machine id to: %v", machineId)
 	}
 
-	wg.Add(2)
+	wg.Add(1)
 	go func() {
 		for {
 			info := core.GetMachineInfo()
-			service.ReportOnce(info)
+			err := service.ReportOnce(info)
+			if err != nil {
+				log.Println("report failed", err)
+			}
+
 			// 每隔Duration读取一次机器信息
 			time.Sleep(time.Duration(setting.ReportSetting.Duration) * time.Second)
 		}

@@ -79,7 +79,6 @@ func ReportOnce(info *core.MachineInfo) error {
 		TimeStamp:   info.TimeStamp,
 	})
 	if err != nil {
-		log.Printf("remote process call failed: %v", err)
 		return err
 	}
 
