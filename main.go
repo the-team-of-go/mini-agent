@@ -5,6 +5,9 @@ import (
 	"agent/internal/pkg/setting"
 	"agent/service"
 	"fmt"
+	"log"
+	"os"
+	"strconv"
 	"sync"
 	"time"
 )
@@ -18,6 +21,17 @@ func Init() {
 
 func main() {
 	Init()
+
+	if len(os.Args) > 1 {
+		machineId, err := strconv.Atoi(os.Args[1])
+		if err != nil {
+			log.Panic("bad machine id: ", err)
+			return
+		}
+		setting.ReportSetting.MachineId = int32(machineId)
+		log.Printf("set machine id to: %v", machineId)
+	}
+
 	wg.Add(2)
 	go func() {
 		for {

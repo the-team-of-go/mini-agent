@@ -11,8 +11,7 @@ RUN go env -w GO111MODULE=on \
 RUN go mod download && go mod verify
 RUN go build -o /app/agent-container .
 
-#EXPOSE 8080
-#EXPOSE 10001
+ENV ID 1
 
 # 执行manager-container
-CMD ["./agent-container"]
+CMD ["sh", "-c", "./agent-container ${ID}"]
